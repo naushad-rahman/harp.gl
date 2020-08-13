@@ -150,6 +150,7 @@ describe("DataSource", function() {
             it("returns a mapview if attached", function() {
                 dataSource.attach(mapView);
                 expect(dataSource.mapView).to.equal(mapView);
+                expect(dataSource.isDetached()).to.be.false;
             });
 
             it("throws an error if not attached", function() {
@@ -161,6 +162,7 @@ describe("DataSource", function() {
             it("returns mapview projection", function() {
                 dataSource.attach(mapView);
                 expect(dataSource.projection).to.equal(mapView.projection);
+                expect(dataSource.isDetached()).to.be.false;
             });
 
             it("throws an error if not attached", function() {
@@ -178,6 +180,7 @@ describe("DataSource", function() {
             it("sets mapview", function() {
                 dataSource.attach(mapView);
                 expect(dataSource.mapView).to.equal(mapView);
+                expect(dataSource.isDetached()).to.be.false;
             });
         });
 
@@ -186,6 +189,7 @@ describe("DataSource", function() {
                 dataSource.attach(mapView);
                 dataSource.detach(mapView);
                 expect(dataSource).to.have.property("m_mapView").that.is.undefined;
+                expect(dataSource.isDetached()).to.be.true;
             });
 
             it("throws if different mapview is passed", function() {
